@@ -59,7 +59,8 @@ lazy val commonSettings = Seq(
   unmanagedSourceDirectories in Compile += (baseDirectory in ThisBuild).value / "shared/src/main/scala",
   unmanagedSourceDirectories in Test += (baseDirectory in ThisBuild).value / "shared/src/test/scala",
   libraryDependencies ++= Seq(
-    "org.scalatest" %%% "scalatest" % "3.0.3" % "test"
+    "org.scalatest" %%% "scalatest" % "3.0.3" % "test",
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value
   )
 ) ++ overridePublishSignedBothSettings ++ publishSetting ++ scaladocSetting
 
