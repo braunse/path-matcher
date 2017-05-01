@@ -1,3 +1,5 @@
+import ReleaseTransformations._
+
 organization in ThisBuild := "de.sebbraun.helpers"
 
 name in ThisBuild := "path-matcher"
@@ -27,7 +29,6 @@ homepage in ThisBuild := Some(url("https://github.com/braunse/path-matcher"))
 
 pomIncludeRepository in ThisBuild := { _ => false }
 
-/*
 publishTo in ThisBuild := {
   val nexus = "https://oss.sonatype.org/"
   if (isSnapshot.value) {
@@ -36,13 +37,6 @@ publishTo in ThisBuild := {
     Some("releases" at nexus + "service/local/staging/deploy/maven2")
   }
 }
- */
-
-publishTo in ThisBuild := Some(Resolver.bintrayRepo("braunse", "de.sebbraun.helpers"))
-
-bintrayPackage in ThisBuild := "path-matcher"
-
-bintrayRepository in ThisBuild := "de.sebbraun.helpers"
 
 lazy val scaladocSetting = Seq(
   scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits")
@@ -87,3 +81,20 @@ lazy val jvm = project.in(file("jvm"))
   )
   .enablePlugins(SignedAetherPlugin)
   .disablePlugins(AetherPlugin)
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion, // performs the initial git checks
+  tagRelease,
+  publishArtifacts, // checks whether `publishTo` is properly set up
+  setNextVersion,
+  commitNextVersion,
+  pushChanges // also checks that an upstream branch is properly configured
+)
+
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
+
+releaseCrossBuild in ThisBuild := true
