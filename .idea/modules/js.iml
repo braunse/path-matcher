@@ -18,15 +18,19 @@
       <sourceFolder url="file://$MODULE_DIR$/../../js/src/test/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../js/target/scala-2.12/resource_managed/test" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/../../js/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../js/target/resolution-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/../../js/target/scala-2.10" />
+      <excludeFolder url="file://$MODULE_DIR$/../../js/target/streams" />
+      <excludeFolder url="file://$MODULE_DIR$/../../js/target/test-reports" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="SBT: org.scala-js:scalajs-library_2.12:0.6.16:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scala-lang:scala-reflect:2.12.2:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scala-js:scalajs-test-interface_2.12:0.6.16:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.12.2:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scalactic:scalactic_sjs0.6_2.12:3.0.3:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scalatest:scalatest_sjs0.6_2.12:3.0.3:jar" level="project" />
     <orderEntry type="module" module-name="path-matcher-sources" exported="" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scalatest:scalatest_sjs0.6_2.12:3.0.3:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scalactic:scalactic_sjs0.6_2.12:3.0.3:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.12.2:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scala-js:scalajs-test-interface_2.12:0.6.16:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-reflect:2.12.2:jar" level="project" />
   </component>
 </module>

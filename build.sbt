@@ -18,12 +18,12 @@ developers in ThisBuild := List(
 )
 
 scmInfo in ThisBuild := Some(ScmInfo(
-  url("https://github.com/braunse/simple-lifecycle/tree/master"),
-  connection = "scm:git:https://github.com/braunse/simple-lifecycle",
-  devConnection = Some("scm:git:ssh://ssh@github.com/braunse/simple-lifecycle.git")
+  url("https://github.com/braunse/path-matcher/tree/master"),
+  connection = "scm:git:https://github.com/braunse/path-matcher",
+  devConnection = Some("scm:git:ssh://ssh@github.com/braunse/path-matcher.git")
 ))
 
-homepage in ThisBuild := Some(url("https://github.com/braunse/simple-lifecycle"))
+homepage in ThisBuild := Some(url("https://github.com/braunse/path-matcher"))
 
 pomIncludeRepository in ThisBuild := { _ => false }
 
