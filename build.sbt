@@ -27,16 +27,22 @@ homepage in ThisBuild := Some(url("https://github.com/braunse/path-matcher"))
 
 pomIncludeRepository in ThisBuild := { _ => false }
 
-lazy val publishSetting = Seq(
-  publishTo := {
-    val nexus = "https://oss.sonatype.org/"
-    if (isSnapshot.value) {
-      Some("snapshots" at nexus + "content/repositories/snapshots")
-    } else {
-      Some("releases" at nexus + "service/local/staging/deploy/maven2")
-    }
+/*
+publishTo in ThisBuild := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) {
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  } else {
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
   }
-)
+}
+ */
+
+publishTo in ThisBuild := Some(Resolver.bintrayRepo("braunse", "de.sebbraun.helpers"))
+
+bintrayPackage in ThisBuild := "path-matcher"
+
+bintrayRepository in ThisBuild := "de.sebbraun.helpers"
 
 lazy val scaladocSetting = Seq(
   scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits")
@@ -58,13 +64,14 @@ lazy val pathMatcher = project.in(file("."))
 lazy val commonSettings = Seq(
   name := "path-matcher",
   publishArtifact := true,
+  bintrayRepository := "de.sebbraun.helpers",
   unmanagedSourceDirectories in Compile += (baseDirectory in ThisBuild).value / "shared/src/main/scala",
   unmanagedSourceDirectories in Test += (baseDirectory in ThisBuild).value / "shared/src/test/scala",
   libraryDependencies ++= Seq(
     "org.scalatest" %%% "scalatest" % "3.0.3" % "test",
     "org.scala-lang" % "scala-reflect" % scalaVersion.value
   )
-) ++ overridePublishSignedBothSettings ++ publishSetting ++ scaladocSetting
+) ++ scaladocSetting
 
 lazy val js = project.in(file("js"))
   .settings(
