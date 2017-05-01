@@ -58,7 +58,6 @@ lazy val pathMatcher = project.in(file("."))
 lazy val commonSettings = Seq(
   name := "path-matcher",
   publishArtifact := true,
-  bintrayRepository := "de.sebbraun.helpers",
   unmanagedSourceDirectories in Compile += (baseDirectory in ThisBuild).value / "shared/src/main/scala",
   unmanagedSourceDirectories in Test += (baseDirectory in ThisBuild).value / "shared/src/test/scala",
   libraryDependencies ++= Seq(
