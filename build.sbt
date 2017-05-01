@@ -52,19 +52,37 @@ sourcesInBase in ThisBuild := false
 
 lazy val pathMatcher = project.in(file("."))
   .settings(publishArtifact := false)
+  .settings(releaseSettings)
   .aggregate(js, jvm)
 
+lazy val releaseSettings = Seq(
+  releasePublishArtifactsAction := PgpKeys.publishSigned.value,
+  releaseCrossBuild := true,
+  releaseProcess := Seq[ReleaseStep](
+    checkSnapshotDependencies,
+    inquireVersions,
+    runTest,
+    setReleaseVersion,
+    commitReleaseVersion, // performs the initial git checks
+    tagRelease,
+    publishArtifacts, // checks whether `publishTo` is properly set up
+    setNextVersion,
+    commitNextVersion,
+    pushChanges // also checks that an upstream branch is properly configured
+  )
+)
 
 lazy val commonSettings = Seq(
   name := "path-matcher",
   publishArtifact := true,
+  publishArtifact in Test := false,
   unmanagedSourceDirectories in Compile += (baseDirectory in ThisBuild).value / "shared/src/main/scala",
   unmanagedSourceDirectories in Test += (baseDirectory in ThisBuild).value / "shared/src/test/scala",
   libraryDependencies ++= Seq(
     "org.scalatest" %%% "scalatest" % "3.0.3" % "test",
     "org.scala-lang" % "scala-reflect" % scalaVersion.value
   )
-) ++ scaladocSetting
+) ++ releaseSettings ++ scaladocSetting
 
 lazy val js = project.in(file("js"))
   .settings(
@@ -81,19 +99,4 @@ lazy val jvm = project.in(file("jvm"))
   .enablePlugins(SignedAetherPlugin)
   .disablePlugins(AetherPlugin)
 
-releaseProcess in ThisBuild := Seq[ReleaseStep](
-  checkSnapshotDependencies,
-  inquireVersions,
-  runTest,
-  setReleaseVersion,
-  commitReleaseVersion, // performs the initial git checks
-  tagRelease,
-  publishArtifacts, // checks whether `publishTo` is properly set up
-  setNextVersion,
-  commitNextVersion,
-  pushChanges // also checks that an upstream branch is properly configured
-)
 
-releasePublishArtifactsAction in ThisBuild := PgpKeys.publishSigned.value
-
-releaseCrossBuild in ThisBuild := true
