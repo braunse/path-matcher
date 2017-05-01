@@ -6,9 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/js-build.iml" filepath="$PROJECT_DIR$/.idea/modules/js-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jvm.iml" filepath="$PROJECT_DIR$/.idea/modules/jvm.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jvm-build.iml" filepath="$PROJECT_DIR$/.idea/modules/jvm-build.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/path-matcher.iml" filepath="$PROJECT_DIR$/.idea/modules/path-matcher.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/path-matcher-build.iml" filepath="$PROJECT_DIR$/.idea/modules/path-matcher-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/path-matcher-sources.iml" filepath="$PROJECT_DIR$/.idea/modules/path-matcher-sources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pathMatcher.iml" filepath="$PROJECT_DIR$/.idea/modules/pathMatcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pathMatcher-build.iml" filepath="$PROJECT_DIR$/.idea/modules/pathMatcher-build.iml" />
     </modules>
   </component>
 </project>

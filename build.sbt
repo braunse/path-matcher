@@ -44,18 +44,20 @@ lazy val scaladocSetting = Seq(
 
 publishMavenStyle in ThisBuild := true
 
-publishTo := None
-
 autoAPIMappings in ThisBuild := true
-
 
 // project definitions:
 
-sourcesInBase := false
+sourcesInBase in ThisBuild := false
 
-aggregateProjects(js, jvm)
+lazy val pathMatcher = project.in(file("."))
+  .settings(publishArtifact := false)
+  .aggregate(js, jvm)
+
 
 lazy val commonSettings = Seq(
+  name := "path-matcher",
+  publishArtifact := true,
   unmanagedSourceDirectories in Compile += (baseDirectory in ThisBuild).value / "shared/src/main/scala",
   unmanagedSourceDirectories in Test += (baseDirectory in ThisBuild).value / "shared/src/test/scala",
   libraryDependencies ++= Seq(
