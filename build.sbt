@@ -81,7 +81,7 @@ lazy val jvm = project.in(file("jvm"))
   .enablePlugins(SignedAetherPlugin)
   .disablePlugins(AetherPlugin)
 
-releaseProcess := Seq[ReleaseStep](
+releaseProcess in ThisBuild := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
   runTest,
@@ -94,6 +94,6 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges // also checks that an upstream branch is properly configured
 )
 
-releasePublishArtifactsAction := PgpKeys.publishSigned.value
+releasePublishArtifactsAction in ThisBuild := PgpKeys.publishSigned.value
 
 releaseCrossBuild in ThisBuild := true
